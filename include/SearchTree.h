@@ -13,14 +13,22 @@ struct Node {
 class set {
 	Node* _root;
 	size_t _size;
+
+	bool search(Node*, int);
+	void pre_print(Node*);
+	Node* find_min(Node*);
+	Node* copy(Node*);
+	void delete_all(Node*);
+	bool delete_node(Node*&, int);
 public:
 	set() : _root(nullptr), _size(0) {};
 	set(int);
-	//set(const set& copy);
-	//~set();
-	//set& operator=(set& copy);
+	set(const set&);
+	~set();
+	set& operator=(const set&);
 	bool insert(int);
-	//bool contains(int key);
-	//bool erase(int key);
+	void print();
+	bool contains(int);
+	bool erase(int);
 };
 #endif
