@@ -1,8 +1,21 @@
 #include"../include/experiment.h"
+#include"../include/task.h"
 const std::vector<size_t> lengths = { 1000, 10000, 100000 };
 using namespace std;
 
 int main() {
+	//______________________________________________________________________________________________________________________________________________//
+	std::vector<int> vec = { 3, 2, 2, 2, 2, 2, 4 };
+
+	std::vector<int> duplicates = find(vec);
+
+	std::cout << "Duplicate elements: ";
+	for (int num : duplicates) {
+		std::cout << num << " ";
+	}
+	std::cout << std::endl;
+	//______________________________________________________________________________________________________________________________________________//
+
 	cout << "Average Fill Time BST " << endl;
 	for (size_t i = 0; i < lengths.size(); ++i) {
 		cout << lengths[i] << " unique numbers:"
@@ -78,4 +91,7 @@ int main() {
 	}
 	cout << endl;
 
+	
+
+	return 0;
 }

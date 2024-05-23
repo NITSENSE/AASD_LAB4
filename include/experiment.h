@@ -2,7 +2,6 @@
 #define EXP
 
 #include "SearchTree.h"
-#include <vector>
 #include <chrono>
 
 const size_t K = 116640;

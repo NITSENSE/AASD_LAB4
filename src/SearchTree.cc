@@ -67,8 +67,8 @@ bool set::search(const Node* root, const int value) const {
 	if (!root) return false;
 	else {
 		if (root->data == value) return true;
-		if (root->data < value) return search(root->left_node, value);
-		else return search(root->right_node, value);
+		if (root->data < value) return search(root->right_node, value);
+		else return search(root->left_node, value);
 	}
 }
 

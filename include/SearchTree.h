@@ -2,6 +2,7 @@
 #define ST
 
 #include<iostream>
+#include<vector>
 
 struct Node {
 	int  data;
