@@ -14,15 +14,18 @@ if(MSVC)
     endif()
 endif()
 
-include(FetchContent)
-FetchContent_Declare(googletest URL https://github.com/google/googletest/archive/6b63c98ac43efc992122f1da12aaf0a0e0658206.zip)
-set(gtest_force_shared_crt ON CACHE BOOL "" FORCE)
-FetchContent_MakeAvailable(googletest)
+# Указываем пути к исходным файлам относительно корня проекта
+set(SRC_DIR ${CMAKE_CURRENT_SOURCE_DIR}/src)
+set(INCLUDE_DIR ${CMAKE_CURRENT_SOURCE_DIR}/include)
 
-add_library(_tree "include/SearchTree.h" "src/SearchTree.cc")
-set_target_properties(_tree PROPERTIES LINKER_LANGUAGE CXX)
-target_compile_features(_tree PUBLIC cxx_std_23)
+# Добавляем библиотеку
+add_library(_tree SHARED
+    ${INCLUDE_DIR}/SearchTree.h
+    ${SRC_DIR}/SearchTree.cc
+    ${INCLUDE_DIR}/experiment.h
+)
+target_include_directories(_tree PUBLIC ${INCLUDE_DIR})
 
-
-add_executable(main "src/main.cc")
+# Добавляем исполняемый файл
+add_executable(main ${SRC_DIR}/main.cc)
 target_link_libraries(main _tree)

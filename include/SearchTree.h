@@ -14,7 +14,7 @@ class set {
 	Node* _root;
 	size_t _size;
 
-	bool search(Node*, int);
+	bool search(const Node*, const int) const;
 	void pre_print(Node*);
 	Node* find_min(Node*);
 	Node* copy(Node*);
@@ -28,7 +28,8 @@ public:
 	set& operator=(const set&);
 	bool insert(int);
 	void print();
-	bool contains(int);
+	bool contains(const int) const;
 	bool erase(int);
+	void clear();
 };
 #endif

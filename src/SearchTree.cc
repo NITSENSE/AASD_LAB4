@@ -10,8 +10,8 @@ Node*set::find_min(Node* root_node) {
 
 bool set::delete_node(Node*& root_node, int value) {
 	if (!root_node) return false;
-	if (root_node->data < value) return delete_node(root_node->left_node, value);
-	else if (root_node->data > value) return delete_node(root_node->right_node, value);
+	if (root_node->data < value) return delete_node(root_node->right_node, value);
+	else if (root_node->data > value) return delete_node(root_node->left_node, value);
 	else {
 		if (!root_node->left_node && !root_node->right_node) {
 			delete root_node;
@@ -48,7 +48,7 @@ Node* set::copy(Node* node) {
 }
 
 void set::delete_all(Node* node) {
-	if (!node) {
+	if (node) {
 		delete_all(node->left_node);
 		delete_all(node->right_node);
 		delete node;
@@ -56,14 +56,14 @@ void set::delete_all(Node* node) {
 }
 
 void set::pre_print(Node* node) {
-	if (node != nullptr) {
+	if (node) {
 		pre_print(node->left_node);
 		std::cout << node->data << " ";
 		pre_print(node->right_node);
 	}
 }
 
-bool set::search(Node* root, int value) {
+bool set::search(const Node* root, const int value) const {
 	if (!root) return false;
 	else {
 		if (root->data == value) return true;
@@ -132,6 +132,11 @@ void set::print() {
 	std::cout << std::endl;
 }
 
-bool set::contains(int value) {
+bool set::contains(const int value) const {
 	return search(_root, value);
+}
+
+void set::clear() {
+	delete_all(_root);
+	_root = nullptr;
 }
